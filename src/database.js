@@ -10,9 +10,7 @@ const config = {
         storageBucket: "nchat-vue.appspot.com",
         messagingSenderId: "730699864216",
         appId: "1:730699864216:web:7c21d4770ccce5832a18ed"
-    
-      
 }
 
-conts database = firebase.initializeApp (config);
+const database = firebase.initializeApp (config);
 export default database; // exportam defaultne podatke u moju app.vue komponentu
