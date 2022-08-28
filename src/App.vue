@@ -1,27 +1,75 @@
+<!-- comment -->
+
 <template>
-  <div class="view login">
-    <form class="login-form">
-      <h1>Login to nchat</h1>
-      <label for="username">Username</label>
-      <input type="text" placeholder="Enter your username..."/>
-      <input type="submit" value="login"/>
+  <div class="view login" v-if=" state.username === '' || state.username === null">
+		<!-- gornji kod nam omogucuje da pokazemo log form ukoliko je polje null ili empty -->
+
+    <form class="login-form" @submit.prevent="Login"> <!-- v-on je direktiva za sync, .prevent zaustavlja stranicu da refresha -->
+		<div class="form-inner">
+				<h1>Login to nchat</h1>
+			<label for="username">Username</label>
+			<input 
+				type="text" 
+				v-model="inputUsername" 
+				placeholder="Enter your username..."/>
+			<input 
+				type="submit" 
+				value="login"/>
+		</div>
     </form>
   </div>
 
-  <div class="view chat">
+  <div class="view chat" v-else> <!-- view chat ce se prikazati ako se dogodi v-if -->
+	
+	<hehader>
+		<button class="logout">Logout</button>
+		<h1>Welcome, {{ state.username }}</h1> <!-- prikaz nasg imena: welcome nikolina -->
+	</hehader>
+
+	<section class="chat-box">
+		<!-- Poruka -->
+	</section>
+
+	<footer>
+		<form @submit.prevent="">
+			<input type="text" placeholder="write a message..."/>
+			<input type="submit" value=""/>
+
+		</form>
+	</footer>
 
 
   </div>
+
 </template>
 
 <script>
-  import db from './db'; 
-
+import { reactive, onMounted, ref } from 'vue'; //reactive i on-Mounted - koristi se za unos varijable, one su reagiraju na podatke
+import db from './db'; 
 
 export default {
-  setup () {
-    return {}
-  }
+setup () {
+		const inputUsername = ref(""); // allow us to use it inside of my template
+				// inputusername means our form
+		const state = reactive(
+			{
+				username: "", // our state username means we arw logged in
+				messages: [] //stored on local state
+			});
+
+		const Login = () => {
+			if (inputUsername.value != "" || inputUsername.value != null) { // checking if its not empty or its not equal to null
+				state.username = inputUsername.value;
+				inputUsername.value = ""; // nakon log ina, ako nesto krene po zlu vracamo se nazad
+			}
+		}
+
+		return {
+			inputUsername,
+			Login,
+			state
+		}
+}
 }
 </script>
 
