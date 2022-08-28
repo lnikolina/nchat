@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import database from './database'; 
+  import db from './db'; 
 
 
 export default {
@@ -25,8 +25,11 @@ export default {
 }
 </script>
 
+
+
+
+
 <style lang="scss">
- 
  * {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;

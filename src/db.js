@@ -1,4 +1,4 @@
-import firebase from "firebase/app"; // pullam odredene podatke - pullam app
+import firebase from "firebase/compat/app"; // pullam odredene podatke - pullam app
 import "firebase/database"; // real time database
 
 const config = {
@@ -12,5 +12,5 @@ const config = {
         appId: "1:730699864216:web:7c21d4770ccce5832a18ed"
 }
 
-const database = firebase.initializeApp (config);
-export default database; // exportam defaultne podatke u moju app.vue komponentu
+const db = firebase.initializeApp (config);
+export default db; // exportam defaultne podatke u moju app.vue komponentu
