@@ -21,10 +21,10 @@
 
   <div class="view chat" v-else> <!-- view chat ce se prikazati ako se dogodi v-if -->
 	
-	<hehader>
+	<header>
 		<button class="logout">Logout</button>
 		<h1>Welcome, {{ state.username }}</h1> <!-- prikaz nasg imena: welcome nikolina -->
-	</hehader>
+	</header>
 
 	<section class="chat-box">
 		<!-- Poruka -->
