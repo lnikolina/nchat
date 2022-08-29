@@ -19,8 +19,8 @@
     </form>
   </div>
 
+
   <div class="view chat" v-else> <!-- view chat ce se prikazati ako se dogodi v-if -->
-	
 	<header>
 		<button class="logout">Logout</button>
 		<h1>Welcome, {{ state.username }}</h1> <!-- prikaz nasg imena: welcome nikolina -->
@@ -31,31 +31,37 @@
 	</section>
 
 	<footer>
-		<form @submit.prevent="">
-			<input type="text" placeholder="write a message..."/>
-			<input type="submit" value=""/>
+		<form @submit.prevent="SendMessage"> <!-- senda poruke -->
+			<input 
+				type="text" 
+				v-model="inputMessage" 
+				placeholder="write a message..."/>
+			<input 
+				type="submit" 
+				value="send"/>
 
 		</form>
 	</footer>
-
-
   </div>
-
 </template>
 
 <script>
-import { reactive, onMounted, ref } from 'vue'; //reactive i on-Mounted - koristi se za unos varijable, one su reagiraju na podatke
+import { reactive, ref } from 'vue'; //reactive i on-Mounted - koristi se za unos varijable, one su reagiraju na podatke
 import db from './db'; 
 
 export default {
 setup () {
 		const inputUsername = ref(""); // allow us to use it inside of my template
 				// inputusername means our form
+		const inputMessage = ref("");
+
+
 		const state = reactive(
 			{
 				username: "", // our state username means we arw logged in
 				messages: [] //stored on local state
 			});
+
 
 		const Login = () => {
 			if (inputUsername.value != "" || inputUsername.value != null) { // checking if its not empty or its not equal to null
@@ -64,10 +70,27 @@ setup () {
 			}
 		}
 
+
+		const SendMessage = () => {
+			const messagesRef = db.database().ref("messages"); //na ovom dijelu stvaram poveznicu s podacima za realtime database u firebaseu
+			
+			if (inputMessage.value === "" || inputMessage.value === null) {
+				return;
+			}
+			const message = {// poruka koju
+				username: state.username,
+				content: inputMessage.value
+			}
+			messagesRef.push(message); // pushamo u live database u firebaseu
+			inputMessage.value = ""; 
+		}
+
 		return {
 			inputUsername,
 			Login,
-			state
+			state,
+			inputMessage,
+			SendMessage
 		}
 }
 }
