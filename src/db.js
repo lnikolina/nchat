@@ -1,5 +1,7 @@
-import firebase from "firebase/compat/app";
-import "firebase/database";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/database';
+import 'firebase/compat/firestore'
+import { reactive, onUnmounted, ref } from 'vue'
 
 const config = {
 	apiKey: "AIzaSyAoROfBHSoxayB7TRofF8gcEFJodSiOWpI",

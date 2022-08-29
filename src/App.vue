@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'; //reactive i on-Mounted - koristi se za unos varijable, one su reagiraju na podatke
+import { reactive, onUnmounted, ref } from 'vue' //reactive i on-Mounted - koristi se za unos varijable, one su reagiraju na podatke
 import db from './db'; 
 
 export default {
