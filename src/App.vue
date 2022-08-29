@@ -22,7 +22,7 @@
 
   <div class="view chat" v-else> <!-- view chat ce se prikazati ako se dogodi v-if -->
 	<header>
-		<button class="logout">Logout</button>
+		<button class="logout" @click="Logout">Logout</button>
 		<h1>Welcome, {{ state.username }}</h1> <!-- prikaz nasg imena: welcome nikolina -->
 	</header>
 
@@ -78,6 +78,11 @@ setup () {
 			}
 		}
 
+		const Logout = () => {
+			state.username = "";
+
+		}
+
 
 		const SendMessage = () => {
 			const messagesRef = db.database().ref("messages"); //na ovom dijelu stvaram poveznicu s podacima za realtime database u firebaseu
@@ -114,7 +119,8 @@ setup () {
 			Login,
 			state,
 			inputMessage,
-			SendMessage
+			SendMessage,
+			Logout
 		}
 }
 }
