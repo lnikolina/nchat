@@ -26,9 +26,17 @@
 		<h1>Welcome, {{ state.username }}</h1> <!-- prikaz nasg imena: welcome nikolina -->
 	</header>
 
-	<section class="chat-box">
-		<!-- Poruka -->
-	</section>
+	<section class="chat-box"> <!--prikaz upisane poruke na ekranu -->
+      <div 
+        v-for="message in state.messages" 
+        :key="message.key" 
+        :class="(message.username == state.username ? 'message current-user' : 'message')">
+        <div class="message-inner">
+          <div class="username">{{ message.username }}</div>
+          <div class="content">{{ message.content }}</div>
+        </div>
+      </div>
+    </section>
 
 	<footer>
 		<form @submit.prevent="SendMessage"> <!-- senda poruke -->
@@ -46,7 +54,7 @@
 </template>
 
 <script>
-import { reactive, onUnmounted, ref } from 'vue' //reactive i on-Mounted - koristi se za unos varijable, one su reagiraju na podatke
+import { reactive, onUnmounted, ref, onMounted } from 'vue' //reactive i on-Mounted - koristi se za unos varijable, one su reagiraju na podatke
 import db from './db'; 
 
 export default {
@@ -84,6 +92,22 @@ setup () {
 			messagesRef.push(message); // pushamo u live database u firebaseu
 			inputMessage.value = ""; 
 		}
+		onMounted(() => {
+      const messagesRef = db.database().ref("messages");
+      messagesRef.on('value', snapshot => {
+        const data = snapshot.val();
+        let messages = [];
+        Object.keys(data).forEach(key => {
+          messages.push({
+            id: key,
+            username: data[key].username,
+            content: data[key].content
+          });
+        });
+        state.messages = messages;
+      });
+    });
+		
 
 		return {
 			inputUsername,
