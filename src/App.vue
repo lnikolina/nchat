@@ -1,12 +1,14 @@
 <!-- comment -->
 
 <template>
+
+
   <div class="view login" v-if=" state.username === '' || state.username === null">
 		<!-- gornji kod nam omogucuje da pokazemo log form ukoliko je polje null ili empty -->
 
     <form class="login-form" @submit.prevent="Login"> <!-- v-on je direktiva za sync, .prevent zaustavlja stranicu da refresha -->
 		<div class="form-inner">
-				<h1>Login to nchat</h1>
+				<h1>Welcome!  Login to nchat</h1>
 			<label for="username">Username</label>
 			<input 
 				type="text" 
@@ -138,6 +140,7 @@ setup () {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	
 }
 .view {
 	display: flex;
@@ -155,13 +158,14 @@ setup () {
 			.form-inner {
 				display: block;
 				background-color: #FFF;
-				padding: 50px 15px;
+				padding: 100px 15px;
 				border-radius: 16px;
 				box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 				h1 {
 					color: #AAA;
 					font-size: 28px;
-					margin-bottom: 30px;
+					margin-bottom: 50px;
+					text-align: center;
 				}
 				label {
 					display: block;
