@@ -24,7 +24,16 @@
 
   <div class="view chat" v-else> <!-- view chat ce se prikazati ako se dogodi v-if -->
 	<header>
-		<button class="logout" @click="Logout">Logout</button>
+
+		<!-- *********** navbar ************ -->
+		<div class="topnav">
+			<a class="active" href="#home">Home</a>
+			<a href="#news">News</a>
+			<a href="#contact">Contact</a>
+			<a href="#about">About</a>
+			<a> <button class="logout" @click="Logout">Logout</button> </a>
+		</div>
+
 		<h1>Welcome, {{ state.username }}</h1> <!-- prikaz nasg imena: welcome nikolina -->
 	</header>
 
@@ -51,6 +60,7 @@
 				value="send"/>
 
 		</form>
+
 	</footer>
   </div>
 </template>
@@ -133,6 +143,9 @@ setup () {
 
 <!-- ****************************** CSS ****************************** -->
 <style lang="scss">
+	h1 {
+		text-align: center;
+	}
  * {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -140,6 +153,7 @@ setup () {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	position: sticky;
 	
 }
 .view {
@@ -161,6 +175,7 @@ setup () {
 				padding: 100px 15px;
 				border-radius: 16px;
 				box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+				
 				h1 {
 					color: #AAA;
 					font-size: 28px;
@@ -229,10 +244,12 @@ setup () {
 		header {
 			position: relative;
 			display: block;
-			width: 100%;
-			padding: 50px 30px 10px;
+			width: auto;
+			padding: 10px;
+		
+			
 			.logout {
-				position: absolute;
+				text-align: right;
 				top: 15px;
 				right: 15px;
 				appearance: none;
@@ -255,6 +272,7 @@ setup () {
 			box-shadow: 0px 0px 12px rgba(100, 100, 100, 0.2);
 			flex: 1 1 100%;
 			padding: 30px;
+			
 			.message {
 				display: flex;
 				margin-bottom: 15px;
@@ -297,7 +315,7 @@ setup () {
 			position: sticky;
 			bottom: 0px;
 			background-color: #FFF;
-			padding: 30px;
+			padding:30px;
 			box-shadow: 0px 0px 12px rgba(100, 100, 100, 0.2);
 			form {
 				display: flex;
@@ -339,6 +357,43 @@ setup () {
 			}
 		}
 	}
+}
+
+/* ********************** top navbar  ********************** */
+
+	/* Add a black background color to the top navigation */
+.topnav {
+
+  background-color: #ea526f;
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  height: auto;
+  width: auto;
+  justify-content: space-between;
+
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 5px 7px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: aaa;
+  color: white;
 }
 
 </style>
