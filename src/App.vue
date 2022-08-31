@@ -27,11 +27,10 @@
 
 		<!-- *********** navbar ************ -->
 		<div class="topnav">
-			<a class="active" href="#home">Home</a>
-			<a href="#news">News</a>
-			<a href="#contact">Contact</a>
-			<a href="#about">About</a>
-			<a> <button class="logout" @click="Logout">Logout</button> </a>
+			<a class="active" href="src/App.vue">Home</a>
+			<a href="public/contact.html">Contact</a>
+			<a href="public/about.vue">About</a>
+			<button class="logout" @click="Logout">Logout</button>
 		</div>
 
 		<h1>Welcome, {{ state.username }}</h1> <!-- prikaz nasg imena: welcome nikolina -->
