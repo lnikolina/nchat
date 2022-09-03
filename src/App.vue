@@ -25,13 +25,7 @@
   <div class="view chat" v-else> <!-- view chat ce se prikazati ako se dogodi v-if -->
 	<header>
 
-		<!-- *********** navbar ************ -->
-		<div class="topnav">
-			<a class="active" href="src/App.vue">Home</a>
-			<a href="public/contact.html">Contact</a>
-			<a href="public/about.vue">About</a>
 			<button class="logout" @click="Logout">Logout</button>
-		</div>
 
 		<h1>Welcome, {{ state.username }}</h1> <!-- prikaz nasg imena: welcome nikolina -->
 	</header>
@@ -167,6 +161,7 @@ setup () {
 			display: block;
 			width: 100%;
 			padding: 15px;
+			position: relative;
 			
 			.form-inner {
 				display: block;
@@ -358,41 +353,5 @@ setup () {
 	}
 }
 
-/* ********************** top navbar  ********************** */
-
-	/* Add a black background color to the top navigation */
-.topnav {
-
-  background-color: #ea526f;
-  overflow: hidden;
-  margin: auto;
-  display: flex;
-  height: auto;
-  width: auto;
-  justify-content: space-between;
-
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 5px 7px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: aaa;
-  color: white;
-}
 
 </style>
