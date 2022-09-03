@@ -153,7 +153,7 @@ setup () {
 	display: flex;
 	justify-content: center;
 	min-height: 100vh;
-	background-color: #ea526f;
+	background-color: #b76c77;
 	
 	&.login {
 		align-items: center;
@@ -212,7 +212,7 @@ setup () {
 					display: block;
 					width: 100%;
 					padding: 10px 15px;
-					background-color: #ea526f;
+					background-color: #b76c77;
 					border-radius: 8px;
 					color: #FFF;
 					font-size: 18px;
@@ -220,7 +220,7 @@ setup () {
 				}
 				&:focus-within {
 					label {
-						color: #ea526f;
+						color: #b76c77;
 					}
 					input[type="text"] {
 						background-color: #FFF;
@@ -299,7 +299,7 @@ setup () {
 						.content {
 							color: #FFF;
 							font-weight: 600;
-							background-color: #ea526f;
+							background-color: #b76c77;
 						}
 					}
 				}
@@ -343,7 +343,7 @@ setup () {
 					display: block;
 					padding: 10px 15px;
 					border-radius: 0px 8px 8px 0px;
-					background-color: #ea526f;
+					background-color: #b76c77;
 					color: #FFF;
 					font-size: 18px;
 					font-weight: 700;
